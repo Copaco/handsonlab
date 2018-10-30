@@ -482,4 +482,4 @@ Write-Host "The Bootstrap Powershell Script has Executed Successfully." -Foregro
 Write-Host "Next Steps: (1) Go to Hyper-V-Manager install OS onto the existing VHD or point to your custom VHD"
 Write-Host "(2 - Optional if you need internet) Setup NAT Network and DCHP Server"
 Write-Host "Thank you for using this forked custom-made bootstrap script for Windows Server 2016."
-Write-Host "Team: AZURE COMPUTER SRE   AUTHOR: CHARLES DING"
+Write-Host "Team: COPACO   AUTHOR: Gino van Essen & Stephan van de Kruis"
