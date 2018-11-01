@@ -1,8 +1,10 @@
- Get-NetAdapter 
- 
- Noteer de Ifindex van de VEthernet switchname
+
 
 New-VMSwitch -SwitchName "NatSwitch" -SwitchType Internal
+
+Get-NetAdapter 
+
+Noteer de Ifindex van de VEthernet switchname
 
 New-NetIPAddress -IPAddress 192.168.0.1 -PrefixLength 24 -InterfaceIndex (Nummer van de Infindex)
 
