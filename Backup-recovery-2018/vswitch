@@ -1,4 +1,4 @@
- Get-NetAdapter -Name "vEthernet (SwitchName)"
+ Get-NetAdapter 
  
  Noteer de Ifindex van de VEthernet switchname
 
