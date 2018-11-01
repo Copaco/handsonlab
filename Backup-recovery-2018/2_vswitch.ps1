@@ -1,3 +1,5 @@
+New-VMSwitch -SwitchName "NatSwitch" -SwitchType Internal
+
 $ifindex = Get-NetAdapter -Name "vEthernet (SwitchName)"
 
 New-VMSwitch -SwitchName "SwitchName" -SwitchType Internal
