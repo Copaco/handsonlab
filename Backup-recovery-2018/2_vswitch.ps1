@@ -1,8 +1,6 @@
 New-VMSwitch -SwitchName "NatSwitch" -SwitchType Internal
 
-$ifindex = Get-NetAdapter -Name "vEthernet (SwitchName)"
-
-New-VMSwitch -SwitchName "SwitchName" -SwitchType Internal
+$ifIndex = Get-NetAdapter -Name "vEthernet (NatSwitch)"
 
 New-NetIPAddress -IPAddress 192.168.0.1 -PrefixLength 24 -InterfaceIndex $ifindex.ifIndex
 
