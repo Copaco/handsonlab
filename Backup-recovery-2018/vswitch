@@ -1,7 +1,9 @@
-$ifindex = Get-NetAdapter -Name "vEthernet (SwitchName)"
+ Get-NetAdapter -Name "vEthernet (SwitchName)"
+ 
+ Noteer de Ifindex van de VEthernet switchname
 
 New-VMSwitch -SwitchName "SwitchName" -SwitchType Internal
 
-New-NetIPAddress -IPAddress 192.168.0.1 -PrefixLength 24 -InterfaceIndex $ifindex.ifIndex
+New-NetIPAddress -IPAddress 192.168.0.1 -PrefixLength 24 -InterfaceIndex (Nummer van de Infindex)
 
 New-NetNat -Name MyNATnetwork -InternalIPInterfaceAddressPrefix 192.168.0.0/24
