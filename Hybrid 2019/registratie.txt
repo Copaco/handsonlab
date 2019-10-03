@@ -1,9 +1,6 @@
 
 Registratie Cloud Value Academy
-https://www.cloudvalueacademy.services/formulier/Bootcamp_presentie20062019
-
-Management User Interface
-https://github.com/ChristianMontoya/RDS-Templates
+https://www.cloudvalueacademy.services/formulier/BootcampAzureHybrid03102019
 
 Windows Virtual Desktop pricing example
 https://azure.com/e/55d8182ad30a4e3e936e8ca9c77a1721 
