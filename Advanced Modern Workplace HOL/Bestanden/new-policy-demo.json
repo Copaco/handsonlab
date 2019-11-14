@@ -1,0 +1,12 @@
+{
+    "@odata.type":  "#microsoft.graph.windows10GeneralConfiguration",
+    "description":  "Copaco Graph Import",
+    "displayName":  "Copaco graph-import2",
+    "cellularBlockVpn":  false,
+    "cellularBlockVpnWhenRoaming":  false,
+    "cellularData":  "allowed",
+    "defenderBlockEndUserAccess":  false,
+    "defenderDaysBeforeDeletingQuarantinedMalware":  null,
+    "defenderDetectedMalwareActions":  null,
+    "defenderSystemScanSchedule":  "userDefined"
+}
