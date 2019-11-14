@@ -84,3 +84,43 @@ $uri = "https://graph.microsoft.com/beta/users" + '/' + "CameronW@M365x428595.On
 $membership = Invoke-RestMethod -Method GET -Uri $uri -Headers @{Authorization = "Bearer $token" } -ErrorAction Stop
 $membership.value | select DisplayName
 
+
+###Export Device configuration profiles
+$uri = "https://graph.microsoft.com/beta/deviceManagement/deviceconfigurations"
+$configs = Invoke-RestMethod -Method GET -Uri $uri -Headers @{Authorization = "Bearer $token" } -ErrorAction Stop
+
+foreach ($config in $configs.value) {
+    $configname = $config.displayName
+    $configfile = "C:\temp\$configname" + '.json'
+    $config | ConvertTo-Json | out-file $configfile
+}
+
+
+###Export Device Compliance Policies
+$uri = "https://graph.microsoft.com/beta/deviceManagement/deviceCompliancePolicies"
+$compliances = Invoke-RestMethod -Method GET -Uri $uri -Headers @{Authorization = "Bearer $token" } -ErrorAction Stop
+
+foreach ($compliance in $compliances.value) {
+    $configname = $compliance.displayName
+    $configfile = "C:\temp\$configname" + '.json'
+    $config | ConvertTo-Json | out-file $configfile
+}
+
+
+###Export Hello For Business Settings
+$uri = "https://graph.microsoft.com/beta/deviceManagement/deviceEnrollmentConfigurations"
+$WHBusiness = Invoke-RestMethod -Method GET -Uri $uri -Headers @{Authorization = "Bearer $token" } -ErrorAction Stop
+$WHBusiness
+
+$configname = $WHBusiness.value | select Displayname
+$configfile = "C:\temp\$($configname[0])" + '.json'
+$config | ConvertTo-Json | out-file $configfile
+
+#Import Device Configuration Policy
+$uri = "https://graph.microsoft.com/beta/deviceManagement/deviceconfigurations"
+$NewPolicy = get-content "C:\Users\StephanK\Desktop\MSIX demo\Graph Api\new-policy-demo.json"
+
+$outputNieuwPolicy = Invoke-RestMethod -Method POST -Uri $uri -Headers @{Authorization = "Bearer $token" } -ErrorAction Stop -Body $NewPolicy -ContentType 'application/json'
+
+$uri = "https://graph.microsoft.com/beta/deviceManagement/deviceconfigurations/$($outputNieuwPolicy.id)"
+Invoke-RestMethod -Method GET -Uri $uri -Headers @{Authorization = "Bearer $token" } -ErrorAction Stop
