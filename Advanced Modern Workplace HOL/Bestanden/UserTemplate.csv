@@ -1,0 +1,11 @@
+version:v1.0,,,,,,,,,,,,,,,,
+Name (example: Chris Green) [displayName] *,User name (example: chris@contoso.com) [userPrincipalName] *,Initial password [passwordProfile] *,First name [givenName],Last name [surname],Job title [jobTitle],Department [department],Block sign in (Yes/No) [accountEnabled] *,Usage location [usageLocation],Street address [streetAddress],State or province [state],Country or region [country],Office [physicalDeliveryOfficeName],City [city],ZIP or postal code [postalCode],Office phone [telephoneNumber],Mobile phone [mobile]
+Alex Wilber,AlexW@<tenant>.onmicrosoft.com,Password2019!,Alex,Wilber,Marketing Assistant,Marketing,No,NL,9256 Towne Center Dr., Suite 400,CA,United States,131/1104,San Diego,92121,+1 858 555 0110
+Allan Deyoung,AllanD@<tenant>.onmicrosoft.com,Password2019!,Allan,Deyoung,IT Admin,IT,No,NL,N19 W24133 Riverwood Dr., Suite 150,WI,United States,24/1106,Waukesha,53188,+1 262 555 0106
+Diego Siciliani,DiegoS@<tenant>.onmicrosoft.com,Password2019!,Diego,Siciliani,HR Manager,HR,No,NL,3535 Gradview Parkway Suite 335,AL,United States,14/1108,Birmingham,35243,+1 205 555 0108,
+Isaiah Langer,IsaiahL@<tenant>.onmicrosoft.com,Password2019!,Isaiah,Langer,Sales Rep,Sales,No,NL,7633 E. 63rd Place, Suite 300,OK,United States,20/1101,Tulsa,74133,+1 918 555 0101
+Joni Sherman,JoniS@<tenant>.onmicrosoft.com,Password2019!,Joni,Sherman,Paralegal,Legal,No,NL,8055 Microsoft Way,NC,United States,20/1109,Charlotte,28273,+1 980 555 0101,
+Lynne Robbins,LynneR@<tenant>.onmicrosoft.com,Password2019!,Lynne,Robbins,Planner,Retail,No,NL,7633 E. 63rd Place, Suite 300,OK,United States,20/1104,Tulsa,74133,+1 918 555 0104
+Megan Bowen,MeganB@<tenant>.onmicrosoft.com,Password2019!,Megan,Bowen,Marketing Manager,Marketing,No,NL,30 Isabella St., Second Floor,PA,United States,12/1110,Pittsburgh,15212,+1 412 555 0109
+Nestor Wilke,NestorW@<tenant>.onmicrosoft.com,Password2019!,Nestor,Wilke,Director,Operations,No,NL,320 Westlake Ave N. Thomas St.,WA,United States,36/2121,Seattle,98109,+1 206 555 0105,
+Patti Fernandez,PattiF@<tenant>.onmicrosoft.com,Password2019!,Patti,Fernandez,President,Executive Management,No,NL,9900 Corporate Campus Dr., Suite 3000,KY,United States,15/1102,Louisville,40223,+1 502 555 0144
