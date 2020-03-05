@@ -1,6 +1,3 @@
 
 Registratie Cloud Value Academy
-https://www.cloudvalueacademy.services/formulier/BootcampAzureHybrid03102019
-
-Windows Virtual Desktop pricing example
-https://azure.com/e/55d8182ad30a4e3e936e8ca9c77a1721 
+https://www.cloudvalueacademy.services/formulier/Bootcamp-Azure-06032020
