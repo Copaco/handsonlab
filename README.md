@@ -1,3 +1,3 @@
-# Azure Hybrid Hands-on Lab
+# Azure Hands-on Labs
 ## Copaco Cloud Value Academy
 
