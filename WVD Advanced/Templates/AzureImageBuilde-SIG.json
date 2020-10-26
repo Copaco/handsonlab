@@ -65,8 +65,7 @@
                         "baseosimg": "wvd2004"
                     },
                     "replicationRegions": [
-                      "<region1>",
-                      "<region2>"
+                      "<region1>"
                     ]
                 }
             ]
