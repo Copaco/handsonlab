@@ -56,11 +56,6 @@
             "customize": [
 
                     {
-                        "type": "PowerShell",
-                        "name": "CreateBuildPath",
-                        "scriptUri": "https://raw.githubusercontent.com/Copaco/handsonlab/master/WVD%20Advanced/Scripts/WVDImageBuilder.ps1"
-                    },
-                    {
                         "type": "WindowsRestart",
                         "restartCheckCommand": "echo Azure-Image-Builder-Restarted-the-VM  > c:\\buildArtifacts\\azureImageBuilderRestart.txt",
                         "restartTimeout": "5m"
