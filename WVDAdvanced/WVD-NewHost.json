@@ -42,9 +42,6 @@
     "SubnetName": {
       "type": "string"
     },
-    "ProfilePath": {
-      "type": "string"
-    },
     "RegistrationToken": {
       "type": "string"
     }
