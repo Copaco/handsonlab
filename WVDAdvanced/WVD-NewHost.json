@@ -23,14 +23,15 @@
     },
     "Image": {
       "type": "string"
+      ]
     },
     "VMSize": {
       "type": "string",
       "defaultValue": "Small",
       "allowedValues": [
-        "Small",
-        "Medium",
-        "Large"
+        "Standard_B2ms",
+        "Standard_DS3_v2",
+        "Standard_DS14_v2"
       ]
     },
     "VnetRgName": {
@@ -47,30 +48,9 @@
     },
     "RegistrationToken": {
       "type": "string"
-    },
-    "Optimize": {
-      "type": "bool",
-      "allowedValues": [
-        true,
-        false
-      ]
     }
   },
-  "variables": {
-    "VM_Images": {
-      "Server": {
-        "publisher": "MicrosoftWindowsServer",
-        "offer": "WindowsServer",
-        "sku": "2019-Datacenter-smalldisk",
-        "version": "latest"
-      },
-      "Client": {
-        "publisher": "microsoftwindowsdesktop",
-        "offer": "office-365",
-        "sku": "20h1-evd-o365pp",
-        "version": "latest"
-      }
-    },
+  "variables": 
     "VM_SIZES": {
       "Standard_B2ms": {
         "WVDsize": "Standard_B2ms"
