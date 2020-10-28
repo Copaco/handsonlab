@@ -21,12 +21,8 @@
       "maxValue": 99,
       "defaultValue": 1
     },
-    "OperatingSystem": {
-      "type": "string",
-      "defaultValue": "Client",
-      "allowedValues": [
-        "Server",
-        "Client"
+    "Image": {
+      "type": "string"
       ]
     },
     "VMSize": {
@@ -77,13 +73,13 @@
       }
     },
     "VM_SIZES": {
-      "Small": {
+      "Standard_B2ms": {
         "WVDsize": "Standard_B2ms"
       },
-      "Medium": {
+      "Standard_DS3_v2": {
         "WVDsize": "Standard_DS3_v2"
       },
-      "Large": {
+      "Standard_DS14_v2": {
         "WVDsize": "Standard_DS14_v2"
       }
     },
@@ -166,10 +162,7 @@
             }
           },
           "imageReference": {
-            "publisher": "[variables('VM_IMAGES')[parameters('OperatingSystem')].publisher]",
-            "offer": "[variables('VM_Images')[parameters('OperatingSystem')].offer]",
-            "sku": "[variables('VM_Images')[parameters('OperatingSystem')].sku]",
-            "version": "[variables('VM_Images')[parameters('OperatingSystem')].version]"
+              "id": "[parameters('Image')]"
           }
         },
         "networkProfile": {
@@ -226,33 +219,6 @@
       },
       "dependsOn": [
         "WVD-Copy"
-      ]
-    },
-    {
-      "type": "Microsoft.Compute/virtualMachines/extensions",
-      "name": "[concat(variables('VMName'),copyIndex(),'/CustomScriptExtension')]",
-      "apiVersion": "2015-06-15",
-      "location": "[resourceGroup().location]",
-      "copy": {
-        "name": "Script-Copy",
-        "count": "[parameters('Instance')]"
-      },
-      "properties": {
-        "publisher": "Microsoft.Compute",
-        "type": "CustomScriptExtension",
-        "typeHandlerVersion": "1.9",
-        "autoUpgradeMinorVersion": true,
-        "settings": {
-          "fileUris": [
-            "[variables('fileUris')]"
-          ]
-        },
-        "protectedSettings": {
-          "commandToExecute": "[concat ('powershell -ExecutionPolicy Unrestricted -File ', variables('firstFileName'), ' ', variables('arguments'))]"
-        }
-      },
-      "dependsOn": [
-        "JoinDomain-Copy"
       ]
     }
   ],
