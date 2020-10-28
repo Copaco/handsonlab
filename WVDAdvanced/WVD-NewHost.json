@@ -23,7 +23,6 @@
     },
     "Image": {
       "type": "string"
-      ]
     },
     "VMSize": {
       "type": "string",
