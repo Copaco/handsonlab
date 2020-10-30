@@ -34,7 +34,7 @@
     },
     "VMSize": {
       "type": "string",
-      "defaultValue": "Small",
+      "defaultValue": "Standard_B2ms",
       "allowedValues": [
         "Standard_B2ms",
         "Standard_DS3_v2",
