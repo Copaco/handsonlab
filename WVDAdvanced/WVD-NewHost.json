@@ -4,7 +4,7 @@
   "parameters": {
     "Prefix": {
       "type": "string",
-      "defaultValue": "wvd"
+      "defaultValue": "aib"
     },
     "AdminUserName": {
       "type": "string"
@@ -34,7 +34,7 @@
     },
     "VMSize": {
       "type": "string",
-      "defaultValue": "Standard_B2ms",
+      "defaultValue": "Small",
       "allowedValues": [
         "Standard_B2ms",
         "Standard_DS3_v2",
@@ -49,6 +49,16 @@
     },
     "SubnetName": {
       "type": "string"
+    },
+    "RegistrationToken": {
+      "type": "string"
+    },
+    "Optimize": {
+      "type": "bool",
+      "allowedValues": [
+        true,
+        false
+      ]
     }
   },
   "variables": {
@@ -76,8 +86,14 @@
     },
     "VMName": "[concat(parameters('Prefix'),'-VM-')]",
     "subnetRef": "[concat(subscription().id,'/resourceGroups/',parameters('VnetRgName'),'/providers/Microsoft.Network/virtualNetworks/', parameters('VnetName'),'/subnets/', parameters('subnetName'))]",
-    "JoinUser": "[concat(parameters('adminUsername'),'@',parameters('DomainFQDN'))]"
-    },
+    "JoinUser": "[concat(parameters('adminUsername'),'@',parameters('DomainFQDN'))]",
+    "fileUris": "https://raw.githubusercontent.com/Copaco/handsonlab/master/WVDAdvanced/scripts/New-WVDSessionHost.ps1",
+    "UriFileNamePieces": "[split(variables('fileUris'), '/')]",
+    "firstFileNameString": "[variables('UriFileNamePieces')[sub(length(variables('UriFileNamePieces')), 1)]]",
+    "firstFileNameBreakString": "[split(variables('firstFileNameString'), '?')]",
+    "firstFileName": "[variables('firstFileNameBreakString')[0]]",
+    "Arguments": "[string(concat(' -RegistrationToken ', parameters('RegistrationToken'), ' -Optimize ', parameters('Optimize')))]"
+  },
   "resources": [
     {
       "type": "Microsoft.Network/networkInterfaces",
@@ -136,7 +152,7 @@
             }
           },
           "imageReference": {
-              "id": "[parameters('Image')]"
+            "id": "[parameters('Image')]"
           }
         },
         "networkProfile": {
@@ -193,6 +209,33 @@
       },
       "dependsOn": [
         "WVD-Copy"
+      ]
+    },
+    {
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "[concat(variables('VMName'),copyIndex(),'/CustomScriptExtension')]",
+      "apiVersion": "2015-06-15",
+      "location": "[resourceGroup().location]",
+      "copy": {
+        "name": "Script-Copy",
+        "count": "[parameters('Instance')]"
+      },
+      "properties": {
+        "publisher": "Microsoft.Compute",
+        "type": "CustomScriptExtension",
+        "typeHandlerVersion": "1.9",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
+          "fileUris": [
+            "[variables('fileUris')]"
+          ]
+        },
+        "protectedSettings": {
+          "commandToExecute": "[concat ('powershell -ExecutionPolicy Unrestricted -File ', variables('firstFileName'), ' ', variables('arguments'))]"
+        }
+      },
+      "dependsOn": [
+        "JoinDomain-Copy"
       ]
     }
   ],
