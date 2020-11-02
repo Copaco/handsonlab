@@ -55,6 +55,15 @@ $Win7x64_WVDAgent        = 'https://query.prod.cms.rt.microsoft.com/cms/api/am/b
 $Win7x64_WVDBootMgrURI   = 'https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3'
 
 
+New-Item -Path c:\ -Name New-WVDSessionHost.log -ItemType File
+Add-Content `
+-LiteralPath C:\New-WVDSessionHost.log `
+"
+
+RegistrationToken = $RegistrationToken
+Optimize          = $Optimize
+"
+
 ####################################
 #    Test/Create Temp Directory    #
 ####################################
@@ -88,14 +97,7 @@ else {
         -BackgroundColor Black `
         "c:\temp\wvd directory already exists"
 }
-New-Item -Path c:\ -Name New-WVDSessionHost.log -ItemType File
-Add-Content `
--LiteralPath C:\New-WVDSessionHost.log `
-"
 
-RegistrationToken = $RegistrationToken
-Optimize          = $Optimize
-"
 
 
 #################################
@@ -190,6 +192,8 @@ Else {
 ################################
 #    Install WVD Componants    #
 ################################
+Set-Location -Path C:\temp\wvd
+
 Add-Content -LiteralPath C:\New-WVDSessionHost.log "Installing WVD Bootloader"
 $bootloader_deploy_status = Start-Process `
     -FilePath "msiexec.exe" `
@@ -202,6 +206,8 @@ $bootloader_deploy_status = Start-Process `
     -Wait `
     -Passthru
 $sts = $bootloader_deploy_status.ExitCode
+
+
 Add-Content -LiteralPath C:\New-WVDSessionHost.log "Installing WVD Bootloader Complete"
 Write-Output "Installing RDAgentBootLoader on VM Complete. Exit code=$sts`n"
 Wait-Event -Timeout 5
