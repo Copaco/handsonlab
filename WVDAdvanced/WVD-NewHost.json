@@ -15,6 +15,13 @@
     "DomainFQDN": {
       "type": "string"
     },
+    "ouPath": {
+      "type": "string",
+      "defaultValue": "OU=WVD,DC=copacowvd,DC=nl",
+      "metadata": {
+        "description": "Specifies an organizational unit (OU) for the domain account. Enter the full distinguished name of the OU in quotation marks. Example: \"OU=testOU; DC=domain; DC=Domain; DC=com\""
+      }
+    },
     "Instance": {
       "type": "int",
       "minValue": 1,
@@ -200,6 +207,7 @@
         "settings": {
           "Name": "[parameters('DomainFQDN')]",
           "User": "[variables('JoinUser')]",
+          "OUPath": "[parameters('ouPath')]",
           "Restart": "true",
           "Options": "3"
         },
