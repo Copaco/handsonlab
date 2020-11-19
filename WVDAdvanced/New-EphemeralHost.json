@@ -36,6 +36,9 @@
         "Client"
       ]
     },
+    "Image": {
+      "type": "string"
+    },
     "VMSize": {
       "type": "string",
       "defaultValue": "Standard_DS3_v2",
